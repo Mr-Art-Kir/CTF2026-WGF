@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    volumes:
+      - db_volume:/data/db
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  db_volume:
