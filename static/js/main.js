@@ -102,10 +102,7 @@ function createInputLine(promptText = "user@host:~$ ") {
                 }
                 historyIndex = -1;
 
-                // const cmdLine = document.createElement('div');
-                // cmdLine.className = 'line output';
-                // cmdLine.innerHTML = `<span class="prompt">${currentLine.querySelector('.prompt').textContent}</span>${command}`;
-                // terminal.appendChild(cmdLine);
+                
 
                 fetch(API_URL, {
                     method: 'POST',
@@ -118,7 +115,6 @@ function createInputLine(promptText = "user@host:~$ ") {
                 .then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`))
                 .then(data => {
                     addOutput(data.output || 'Нет вывода', !!data.error);
-                    // Обновляем prompt с новым путём
                     const newPrompt = data.prompt || "user@host:~$ ";
                     createInputLine(newPrompt);
                 })
@@ -130,7 +126,6 @@ function createInputLine(promptText = "user@host:~$ ") {
                 createInputLine(currentLine.querySelector('.prompt').textContent);
             }
 
-            // input.value = '';
             sync();
         }
 
@@ -156,10 +151,10 @@ function addOutput(text, isError = false) {
         el.className = 'line output';
 
         let cleaned = line;
-        if (line.includes('\x1b[1;34m')) el.style.color = '#4da6ff'; // синий
-        if (line.includes('\x1b[1;32m')) el.style.color = '#00ff00'; // зелёный
-        if (line.includes('\x1b[1;36m')) el.style.color = '#00ffff'; // циан
-        if (line.includes('\x1b[31m'))   el.style.color = '#ff5555'; // красный
+        if (line.includes('\x1b[1;34m')) el.style.color = '#4da6ff'; 
+        if (line.includes('\x1b[1;32m')) el.style.color = '#00ff00'; 
+        if (line.includes('\x1b[1;36m')) el.style.color = '#00ffff'; 
+        if (line.includes('\x1b[31m'))   el.style.color = '#ff5555'; 
 
         cleaned = cleaned.replace(/\x1b\[[0-9;]*m/g, '');
 
