@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#terminal {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 #000;
+}
+
+#terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+#terminal::-webkit-scrollbar-track {
+  background: #000;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 4px;
+}
+
+.line {
+  display: flex;
+  align-items: flex-start;
+  margin: 0.2em 0;
+  min-height: 1.3em;
+}
+
+.prompt {
+  color: #00ff00;
+  flex-shrink: 0;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.output {
+  color: #00ff00;
+}
+
+.input-area {
+  flex-grow: 1;
+  position: relative;
+}
+
+.visible-text {
+  pointer-events: none;
+  white-space: pre;
+  position: relative;
+  z-index: 1;
+}
+
+/* Мигающий курсор ТОЛЬКО в активной строке */
+.line.active .visible-text::after {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 1.1em;
+  background: #00ff00;
+  vertical-align: middle;
+  animation: blink 1.1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* В неактивных строках курсора нет */
+.line:not(.active) .visible-text::after {
+  display: none;
+}
+
+/* Скрываем настоящий caret браузера */
+.input-field {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  color: transparent;
+  caret-color: transparent !important;
+  outline: none;
+  font: inherit;
+  z-index: 2;
+  opacity: 0;               /* ← делаем input невидимым */
+  pointer-events: all;      /* но при этом он принимает ввод */
+}
