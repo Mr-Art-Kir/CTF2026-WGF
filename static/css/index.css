@@ -1,0 +1,281 @@
+:root {
+    /* Общие системные цвета */
+    --index-bg: #000000;
+    --index-sidebar: #0d1117;
+    --index-card: #161b22;
+    --index-border: #21262d;
+    --index-accent: #046ba3;
+    
+    /* Цвета текста мессенджера */
+    --index-msg-text: #c9d1d9;
+    --index-msg-text-dim: #8b949e;
+    --msg-received-bg: #1e293b;
+    
+    /* Цвета терминала */
+    --index-terminal-bg: #000000;
+    --index-terminal-text: #00ff9d;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--index-bg);
+    color: var(--index-msg-text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Фрейм приложения */
+.index-laptop-frame {
+    width: 100vw;
+    height: 100vh;
+    background: var(--index-bg);
+    overflow: hidden;
+}
+
+.index-browser {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Вкладки (Tabs) */
+.index-tabs {
+    background: var(--index-sidebar);
+    display: flex;
+    height: 48px;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--index-border);
+}
+
+.index-tab {
+    background: var(--index-card);
+    color: var(--index-msg-text-dim);
+    padding: 10px 32px;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.index-tab.index-active {
+    background: var(--index-card);
+    color: #ffffff;
+    border-bottom: 3px solid var(--index-accent);
+}
+
+.index-tab:hover { 
+    background: #1e242c; 
+}
+
+/* Контент вкладок */
+.index-tab-content {
+    flex: 1;
+    overflow: hidden;
+    display: none;
+}
+
+.index-tab-content.index-active { 
+    display: flex !important; 
+}
+
+/* Контейнер ТЕРМИНАЛА (Изоляция шрифта и цвета) */
+.index-terminal-container {
+    height: 100%;
+    width: 100%;
+    background: var(--index-terminal-bg) !important;
+    color: var(--index-terminal-text) !important;
+    padding: 20px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace !important; /* Только здесь моноширинный */
+}
+
+/* МЕССЕНДЖЕР (Изоляция от стилей терминала) */
+.index-messenger {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: var(--index-card);
+}
+
+.index-sidebar {
+    width: 340px;
+    background: var(--index-sidebar);
+    border-right: 1px solid var(--index-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.index-search-bar {
+    padding: 16px;
+}
+
+.index-search-bar input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: none;
+    background: #0f1115;
+    color: #ffffff;
+}
+
+/* Список чатов */
+.index-chat-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.index-chat-item {
+    display: flex;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-items: center;
+}
+
+.index-chat-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.index-chat-item.index-active {
+    background: rgba(4, 107, 163, 0.15);
+}
+
+.index-chat-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--index-accent), #2ea44f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.index-chat-info { 
+    flex: 1; 
+    overflow: hidden; 
+}
+
+.index-chat-title {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.index-chat-preview {
+    font-size: 0.85rem;
+    color: var(--index-msg-text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Главное окно чата */
+.index-main-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--index-card);
+}
+
+.index-chat-header {
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--index-border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--index-sidebar);
+}
+
+.index-chat-header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--index-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.index-chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Сообщения */
+.index-message {
+    max-width: 75%;
+    padding: 10px 16px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.index-message.index-received {
+    background: var(--msg-received-bg);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.index-message.index-sent {
+    background: var(--index-accent);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+/* Зона ввода */
+.index-input-area {
+    padding: 16px 24px;
+    background: var(--index-sidebar);
+    border-top: 1px solid var(--index-border);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.index-input-area input {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: none;
+    background: #0f1115;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.index-input-area button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--index-accent);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.index-input-area button:hover {
+    transform: scale(1.05);
+}

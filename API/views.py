@@ -38,11 +38,10 @@ def terminal_api(request):
             else:
                 target = args[0]
                 
-                # Если цель — "..", ".." или абсолютный путь
                 new_dir = Path(current_dir) / target if not Path(target).is_absolute() else Path(target)
-                new_dir = new_dir.resolve()  # нормализуем путь
+                new_dir = new_dir.resolve()  
 
-                # Проверяем, что новая директория всё ещё внутри PROJECT_ROOT (или равна ему)
+              
                 if new_dir.is_dir() and PROJECT_ROOT in new_dir.parents or new_dir == PROJECT_ROOT:
                     session['terminal_dir'] = str(new_dir)
                     output = f"Перешли в: {new_dir}"

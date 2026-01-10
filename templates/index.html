@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Notebook — Terminal & Telegram</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+</head>
+<body>
+
+<div class="index-laptop-frame">
+    <div class="index-browser">
+        <nav class="index-tabs">
+        <div class="index-tab index-active" data-tab="terminal">
+            <i class="fas fa-terminal"></i>
+            <span>Terminal</span>
+        </div>
+        <div class="index-tab" data-tab="telegram">
+            <i class="fab fa-telegram-plane"></i>
+            <span>Telegram</span>
+        </div>
+        </nav>
+
+        <div id="terminal-tab" class="index-tab-content index-active">
+            <div class="index-terminal-container">
+                {% include "main.html" %}
+            </div>
+        </div>
+
+        <div id="telegram-tab" class="index-tab-content">
+        <div class="index-messenger">
+            <nav class="index-sidebar">
+            <div class="index-search-bar">
+                <input type="text" placeholder="Поиск..."/>
+            </div>
+            <div class="index-chat-list">
+                <div class="index-chat-item">
+                <div class="index-chat-avatar"><i class="fas fa-star"></i></div>
+                <div class="index-chat-info">
+                    <div class="index-chat-title">Избранное</div>
+                    <div class="index-chat-preview">Сохранённые сообщения</div>
+                </div>
+                </div>
+
+                <div class="index-chat-item index-active">
+                <div class="index-chat-avatar">О</div>
+                <div class="index-chat-info">
+                    <div class="index-chat-title">Общий чат</div>
+                    <div class="index-chat-preview">Артём: План на сегодня...</div>
+                </div>
+                </div>
+
+                <div class="index-chat-item">
+                <div class="index-chat-avatar">Д</div>
+                <div class="index-chat-info">
+                    <div class="index-chat-title">Дизайн</div>
+                    <div class="index-chat-preview">Катя: Новый макет...</div>
+                </div>
+                </div>
+            </div>
+            </nav>
+
+            <main class="index-main-chat">
+            <div class="index-chat-header">
+                <div class="index-chat-header-avatar">О</div>
+                <div>
+                <strong>Общий чат</strong>
+                <div style="font-size:0.85rem;color:var(--text-dim);">Артём, Катя, Тимур и ещё 3</div>
+                </div>
+            </div>
+
+            <div class="index-chat-messages">
+                <div class="index-message index-received">
+                Артём: Привет всем! План на сегодня готов?
+                </div>
+                <div class="index-message index-sent">
+                Да, сейчас вышлю
+                </div>
+            </div>
+
+            <div class="index-input-area">
+                <input type="text" placeholder="Напишите сообщение..."/>
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+            </main>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/linkChange.js' %}"></script>
+
+</body>
+</html>
