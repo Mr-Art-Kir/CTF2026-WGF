@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<div class="monitor-frame">
+    <div class="bezel">
+        <div class="screen">
+            <div class="scanlines"></div>
+            <div class="noise"></div>
+            <div class="content-area" id="output-display">
+                <div class="status-bar">
+                    <span>SYSTEM_STATUS: ACTIVE</span>
+                    <span id="system-time">00:00:00</span>
+                </div>
+                <div id="text-canvas" class="text-canvas"></div>
+                <div class="bottom-flare"></div>
+            </div>
+        </div>
+        <div class="monitor-led"></div>
+    </div>
+    <div class="monitor-neck"></div>
+    <div class="monitor-foot"></div>
+</div>
+
+<script src="{% static 'js/home.js' %}"></script>
+{% if state == "Administrator" %}
+    <script>
+        setTimeout(() => pushText("Logining as Administrator"), 2000);
+    </script>
+{% else %}
+    <script>
+        setTimeout(() => pushText("Logining as user"), 2000);
+        setTimeout(() => pushText("Insufficient rights to view information. Administrator status is required. Current user status."), 2300);
+    </script>
+{% endif %}

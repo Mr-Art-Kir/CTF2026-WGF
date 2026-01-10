@@ -1,5 +1,7 @@
 services:
   web:
+    environment:
+      - PYTHONUNBUFFERED=1
     build: .
     volumes:
       - db_volume:/data/db

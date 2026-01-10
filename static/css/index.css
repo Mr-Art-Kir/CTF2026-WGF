@@ -30,7 +30,6 @@ body {
     overflow: hidden;
 }
 
-/* Фрейм приложения */
 .index-laptop-frame {
     width: 100vw;
     height: 100vh;
@@ -44,7 +43,6 @@ body {
     flex-direction: column;
 }
 
-/* Вкладки (Tabs) */
 .index-tabs {
     background: var(--index-sidebar);
     display: flex;
@@ -77,7 +75,6 @@ body {
     background: #1e242c; 
 }
 
-/* Контент вкладок */
 .index-tab-content {
     flex: 1;
     overflow: hidden;
@@ -88,7 +85,6 @@ body {
     display: flex !important; 
 }
 
-/* Контейнер ТЕРМИНАЛА (Изоляция шрифта и цвета) */
 .index-terminal-container {
     height: 100%;
     width: 100%;
@@ -96,10 +92,9 @@ body {
     color: var(--index-terminal-text) !important;
     padding: 20px;
     overflow-y: auto;
-    font-family: 'Courier New', monospace !important; /* Только здесь моноширинный */
+    font-family: 'Courier New', monospace !important; 
 }
 
-/* МЕССЕНДЖЕР (Изоляция от стилей терминала) */
 .index-messenger {
     display: flex;
     height: 100%;
@@ -128,7 +123,6 @@ body {
     color: #ffffff;
 }
 
-/* Список чатов */
 .index-chat-list {
     flex: 1;
     overflow-y: auto;
@@ -183,7 +177,6 @@ body {
     text-overflow: ellipsis;
 }
 
-/* Главное окно чата */
 .index-main-chat {
     flex: 1;
     display: flex;
@@ -220,7 +213,6 @@ body {
     gap: 12px;
 }
 
-/* Сообщения */
 .index-message {
     max-width: 75%;
     padding: 10px 16px;
@@ -242,7 +234,6 @@ body {
     border-bottom-right-radius: 4px;
 }
 
-/* Зона ввода */
 .index-input-area {
     padding: 16px 24px;
     background: var(--index-sidebar);
