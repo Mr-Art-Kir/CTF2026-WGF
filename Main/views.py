@@ -13,14 +13,12 @@ def index(request):
     else:
         from  modules.cookies.install_cookies import install_cookies
         try:
-
             payload:dict  = check_token(request.COOKIES.get('state'))
             if payload.get('state') == 'user' or payload.get('state') == "Administrator" :
                 if payload.get('state')  == 'Administrator':
                     data['state'] = "Administrator"
                     data['key'] = CTF_TOKEN
             else:
-                print("State not found in cookies. Installing cookies...")
                 return install_cookies(request)
         except Exception as e:
             return install_cookies(request)

@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeInfo = document.getElementById('active-info');
     const activeAvatar = document.getElementById('active-avatar');
     const chatWindow = document.getElementById('chat-window');
-
-    const key  = JSON.parse(document.getElementById('my-data-id').textContent);        
+    const data_key= document.getElementById('my-data-id')
+    let key = 0;
+    if (data_key) {
+        key  = JSON.parse(data_key.textContent);        
+    }
+    
     const chatHistory = {
         'favorites': [
             { type: 'sent', text: 'Планы на день' },
