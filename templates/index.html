@@ -62,6 +62,15 @@
                                 <div class="index-chat-preview">Артём: План на сегодня...</div>
                             </div>
                         </div>
+                        {% if state %}
+                            <div class="index-chat-item" data-chat-id="ctf" data-info="key">
+                                <div class="index-chat-avatar">C</div>
+                                <div class="index-chat-info">
+                                    <div class="index-chat-title">CTF2026</div>
+                                    <div class="index-chat-preview">??????</div>
+                                </div>
+                            </div>
+                        {% endif %}
                         
                     </div>
                 </nav>
@@ -81,9 +90,13 @@
         </div>
     </div>
 </div>
-
+{% if state %}
+    {{ key|json_script:"my-data-id" }}
+{% endif %}
 <script src="{% static 'js/linkChange.js' %}"></script>
 <script src="{% static 'js/chat/chatChange.js' %}"></script>
+
+
 
 </body>
 </html>

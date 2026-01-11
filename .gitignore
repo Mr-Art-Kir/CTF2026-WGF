@@ -1,1 +1,4 @@
-config/*.env
+config/
+**/__pycache__/
+db.sqlite3
+.env

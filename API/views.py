@@ -112,20 +112,25 @@ def terminal_api(request):
                 error = "cat: требуется имя файла"
             else:
                 file_path = args[0]
-                full_path = Path(current_dir) / file_path if not Path(file_path).is_absolute() else Path(file_path)
-                full_path = full_path.resolve()
+                if  args[0] == 'config':
+                    full_path = Path(current_dir) / file_path if not Path(file_path).is_absolute() else Path(file_path)
+                    full_path = full_path.resolve()
 
-                if PROJECT_ROOT not in full_path.parents:
-                    error = "cat: выход за пределы проекта запрещён"
-                elif full_path.is_file():
-                    try:
-                        output = full_path.read_text(encoding='utf-8', errors='replace')
-                    except PermissionError:
-                        error = "cat: отказано в доступе"
-                    except Exception as e:
-                        error = f"cat: ошибка: {str(e)}"
+                    if PROJECT_ROOT not in full_path.parents:
+                        error = "cat: выход за пределы проекта запрещён"
+                    elif full_path.is_file():
+                        try:
+                            output = full_path.read_text(encoding='utf-8', errors='replace')
+                        except PermissionError:
+                            error = "cat: отказано в доступе"
+                        except Exception as e:
+                            error = f"cat: ошибка: {str(e)}"
+                    else:
+                        error = f"cat: нет такого файла: {file_path}"
                 else:
-                    error = f"cat: нет такого файла: {file_path}"
+                        error = "cat: отказано в доступе"
+
+
 
         # ─── tree ─────────────────────────────────────────────────────────────
         elif base_cmd == "tree":
